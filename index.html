@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+  <html lang=en> 
+  <head> 
+    <meta charset=utf-8> 
+    <meta http-equiv=X-UA-Compatible content="IE=edge"> 
+    <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=no"> 
+    <link rel="icon" href="/delogosmalltransparent.png">
+        <script src=https://unpkg.com/vue@2.5.17/dist/vue.min.js></script> 
+    <script src=https://unpkg.com/vue-amap@0.5.9/dist/index.js></script> 
+    <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script> <script src=https://unpkg.com/vue-localstorage@0.6.2/dist/vue-local-storage.js></script> 
+    <script src=https://unpkg.com/element-ui@2.4.11/lib/index.js></script> 
+    <script src=https://unpkg.com/vuex@3.0.1/dist/vuex.min.js></script> 
+    <link href=https://unpkg.com/swiper@4.5.0/dist/css/swiper.min.css rel=stylesheet> 
+    <script src=https://unpkg.com/swiper@4.5.0/dist/js/swiper.min.js></script> 
+    <script src=https://unpkg.com/vue-awesome-swiper@3.1.3/dist/vue-awesome-swiper.js></script> 
+    <title>数字孪生平台</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <style type="text/css">
+      body{
+        margin: 0;
+      }
+      ::-webkit-scrollbar {
+        width: 0px;
+      }
+      @media only screen and (max-width: 800px){
+        img {
+          max-width: 100%;
+        }
+        table.content-wrap, table.fullTable, table td.fullTd {
+            width:100% !important;
+        }
+        /*模式二（默认模式），到时候可以选择不同模式设置不同class*/
+        .fixation .fourColumn, .fixation .threeColumn {
+          width: 50% !important;max-width: 50% !important;display: block;float: left;
+        }
+        .fixation .threeColumn.column1 {
+          width: 100% !important;max-width: 100% !important;
+        }
+        /* 模式三（全屏模式）*/
+        .full .fourColumn, .full .threeColumn {
+          width: 100% !important; max-width: 100% !important;display: block !important;
+        }
+         
+        .content-wrap {
+          width: 100% !important;
+        }
+        .content-wrap .el-table__header {
+          width: 100% !important;
+        }
+      }
+      /*@media (min-width: 481px), not screen{
+        table .setting-max-width{
+            width: 600px !important;
+        }
+      }*/
+    </style> 
+    <script>
+      // jQuery代码
+      $(document).ready(function () {
+        $("#b1").click(function () {
+          $("#tab_1").show(); // 显示
+          $("#tab_2").hide(); // 隐藏
+          $("#tab_3").hide(); // 隐藏
+          $("#tab_4").hide(); // 隐藏
+          $("#tab_5").hide(); // 隐藏
+        });
+        $("#b2").click(function () {
+          $("#tab_1").hide();
+          $("#tab_2").show();
+          $("#tab_3").hide();
+          $("#tab_4").hide();
+          $("#tab_5").hide();
+        });
+        $("#b3").click(function () {
+          $("#tab_1").hide();
+          $("#tab_2").hide();
+          $("#tab_3").show();
+          $("#tab_4").hide();
+          $("#tab_5").hide();
+        });
+        $("#b4").click(function () {
+          $("#tab_1").hide();
+          $("#tab_2").hide();
+          $("#tab_3").hide();
+          $("#tab_4").show();
+          $("#tab_5").hide();
+        });
+        $("#b5").click(function () {
+          $("#tab_1").hide();
+          $("#tab_2").hide();
+          $("#tab_3").hide();
+          $("#tab_4").hide();
+          $("#tab_5").show();
+        });
+      });
+    </script> 
+  </head> 
+  <body> 
+    <noscript>
+      <strong>您的浏览器禁用了javascript，请启用后再试.</strong>
+    </noscript> 
+      <script> var lists = [{"selected":false,
+      "hover":false,
+      "clickActive":false,
+      "subHover":false,
+      "controlSelect":false,
+      "error":false
+    },
+    {"type":"textBlock",
+    "text":"<p>\u533b\u7597\u5668\u68b0\u5546\u57ce<\/p>",
+        "hover":false,
+        "subHover":false,
+        "selected":false,
+        "editName":"Text",
+        "width":"0",
+        "isOpenRemoteImageSrc":false,
+        "remoteImageSrc":"",
+        "style":{
+            "isBgAuto":false,
+            "textOuterBg":"rgb(49, 126, 231)",
+            "bgSrc":"",
+            "bgSize":"100px",
+            "bgRepeat":false,
+            "bgPositionTop":50,
+            "bgPositionLeft":10,
+            "widgetPaddingTopBottom":"20px",
+            "widgetPaddingLeftRight":"20px",
+            "fontSize":"24px",
+            "align":"center",
+            "color":"rgba(255, 255, 255, 1)",
+            "fontBolder":0,
+            "lineHeight":"16",
+            "widgetPaddingTop":"20px",
+            "widgetPaddingBottom":"20px",
+            "widgetPaddingLeft":"20px",
+            "widgetPaddingRight":"20px",
+            "bgAttr":"normal"
+        },
+        "clickActive":false,
+        "placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f",
+        "underline":0,
+        "controlSelect":false,
+        "showPaddingWidgetLeftRight":false,
+        "showPaddingWidgetTopBottom":false,
+        "error":false
+    },
+    {"type":"spaceBlock",
+    "hover":false,
+    "subHover":false,
+    "editName":"Space",
+    "width":"0",
+    "selected":false,
+    "isOpenRemoteImageSrc":false,
+    "remoteImageSrc":"",
+    "style":{
+        "isBgAuto":false,
+        "spaceBg":"",
+        "bgSrc":"",
+        "bgSize":"100px",
+        "bgRepeat":false,
+        "bgPositionTop":50,
+        "bgPositionLeft":10,
+        "widgetPaddingTopBottom":"9px",
+        "bgAttr":"normal"
+    },
+    "clickActive":false,
+    "link":"",
+    "controlSelect":false,
+    "error":false
+},
+{"type":"dividerBlock",
+"hover":false,
+"subHover":false,
+"editName":"Divider",
+"width":"0",
+"selected":false,
+"clickActive":false,
+"isOpenRemoteImageSrc":false,
+"remoteImageSrc":"",
+"controlSelect":false,
+"showPaddingWidgetLeftRight":false,
+"showPaddingWidgetTopBottom":false,
+"error":false,
+"style":{
+    "bgAttr":"normal",
+    "dividerOuterBg":"",
+    "bgSrc":"",
+    "bgSize":"100px",
+    "bgPositionTop":50,
+    "bgPositionLeft":10,
+    "lineWidth":"375px",
+    "borderWidth":"1px",
+    "borderColor":"rgb(204 204 204)",
+    "borderStyle":"solid",
+    "align":"center",
+    "widgetPaddingTopBottom":"20px",
+    "widgetPaddingLeftRight":"20px",
+    "widgetPaddingTop":"20px",
+    "widgetPaddingBottom":"20px",
+    "widgetPaddingLeft":"20px",
+    "widgetPaddingRight":"20px"
+}
+},
+{"type":"column",
+"numberEn":"four",
+"containerDrag":false,
+"number":5,
+"hover":false,
+"clickActive":false,
+"selected":false,
+"isOutsideBg":false,
+"outStyle":[],
+"isOpenRemoteImageSrc":false,
+"remoteImageSrc":"",
+"style":{
+    "isBgAuto":false,
+    "bgSrc":"",
+    "bgSize":"100px",
+    "bgRepeat":false,
+    "bgPositionTop":50,
+    "bgPositionLeft":1,
+    "bgColor":"#ffffff",
+    "bgAttr":"normal"
+},
+"children":[
+    {"vColumnSelect":false,
+    "type":"vColumn",
+    "numberEn":"two",
+    "containerDrag":false,
+    "number":2,
+    "hover":true,
+    "clickActive":true,
+    "selected":false,
+    "subHover":false,
+    "isOutsideBg":false,
+    "sort":"after",
+    "outStyle":[],
+    "isOpenRemoteImageSrc":false,
+    "remoteImageSrc":"",
+    "children":[
+        {"type":"buttonBlock",
+        "hover":true,
+        "text":"\u6982\u89c8",
+        "subHover":false,
+        "editName":"Button",
+        "width":1,
+        "buttonLink":"http:\/\/www.drageasy.com",
+        "selected":false,
+        "isOpenRemoteImageSrc":false,
+        "remoteImageSrc":"",
+        "style":{
+            "isBgAuto":false,
+            "buttonOuterBg":"",
+            "borderColor":"rgba(49, 126, 231, 1)",
+            "borderWidth":"1px",
+            "borderStyle":"solid",
+            "borderRadius":"40px",
+            "bgSrc":"",
+            "bgSize":"41px",
+            "bgRepeat":false,
+            "bgPositionTop":45,
+            "bgPositionLeft":42,
+            "paddingTopBottom":"15px",
+            "paddingLeftRight":"25px",
+            "buttonFontSize":"20px",
+            "buttonColor":"#ffffff",
+            "buttonBg":"rgba(49, 126, 231, 1)",
+            "align":"center",
+            "widgetPaddingTopBottom":"1px",
+            "widgetPaddingLeftRight":"0px",
+            "widgetPaddingTop":"20px",
+            "widgetPaddingBottom":"20px",
+            "widgetPaddingLeft":"20px",
+            "widgetPaddingRight":"20px",
+            "bgAttr":"normal"
+        },
+        "bgLevel":"button",
+        "targetDrag":false,
+        "clickActive":false,
+        "controlSelect":false,
+        "showPaddingWidgetLeftRight":false,
+        "showPaddingWidgetTopBottom":false,
+        "error":false,
+        "bgAttr":"normal"},
+        {"type":"textBlock",
+        "text":"<p><span style=\"color: rgb(90, 90, 90);\">\u8840\u538b\u8ba1<\/span><\/p>",
+          "hover":true,"subHover":false,
+          "selected":false,
+          "editName":"Text",
+          "width":"0",
+          "isOpenRemoteImageSrc":false,
+          "remoteImageSrc":"",
+          "style":{"isBgAuto":false,
+          "textOuterBg":"",
+          "bgSrc":"",
+          "bgSize":"100px",
+          "bgRepeat":false,
+          "bgPositionTop":50,
+          "bgPositionLeft":10,
+          "widgetPaddingTopBottom":"2px",
+          "widgetPaddingLeftRight":"0px",
+          "fontSize":"12px",
+          "align":"center",
+          "color":"#666",
+          "fontBolder":0,
+          "lineHeight":"16",
+          "widgetPaddingTop":"20px",
+          "widgetPaddingBottom":"20px",
+          "widgetPaddingLeft":"20px",
+          "widgetPaddingRight":"20px",
+          "bgAttr":"normal"
+        },
+        "targetDrag":false,
+        "controlSelect":false,
+        "placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f",
+        "underline":0,
+        "showPaddingWidgetLeftRight":false,
+        "showPaddingWidgetTopBottom":false,
+        "error":false
+      }],
+      "width":1,
+      "beginIndex":1,
+      "link":"",
+      "controlSelect":false
+    },
+    {"vColumnSelect":false,
+    "type":"vColumn",
+    "numberEn":"two",
+    "containerDrag":false,
+    "number":2,
+    "hover":true,
+    "clickActive":true,
+    "selected":false,
+    "subHover":false,
+    "isOutsideBg":false,
+    "sort":"after",
+    "outStyle":[],
+    "isOpenRemoteImageSrc":false,
+    "remoteImageSrc":"",
+    "children":[{"type":"buttonBlock",
+    "hover":true,
+    "text":"\u4fe1\u53f7",
+    "subHover":false,
+    "editName":"Button",
+    "width":1,
+    "buttonLink":"http:\/\/www.drageasy.com",
+    "selected":false,
+    "isOpenRemoteImageSrc":false,
+    "remoteImageSrc":"",
+    "style":{"isBgAuto":false,
+    "buttonOuterBg":"",
+    "borderColor":"#f4a546",
+    "borderWidth":"1px",
+    "borderStyle":"solid",
+    "borderRadius":"40px",
+    "bgSrc":"",
+    "bgSize":"37px",
+    "bgRepeat":false,
+    "bgPositionTop":45,
+    "bgPositionLeft":42,
+    "paddingTopBottom":"15px",
+    "paddingLeftRight":"25px",
+    "buttonFontSize":"20px",
+    "buttonColor":"#ffffff",
+    "buttonBg":"#f4a546",
+    "align":"center",
+    "widgetPaddingTopBottom":"1px",
+    "widgetPaddingLeftRight":"0px",
+    "widgetPaddingTop":"20px",
+    "widgetPaddingBottom":"20px",
+    "widgetPaddingLeft":"20px",
+    "widgetPaddingRight":"20px",
+    "bgAttr":"normal"
+  },
+  "bgLevel":"button",
+  "vColumnSelect":false,
+  "targetDrag":false,
+  "clickActive":false,
+  "controlSelect":false,
+  "showPaddingWidgetLeftRight":false,
+  "showPaddingWidgetTopBottom":false,
+  "error":false,
+  "bgAttr":"normal"
+},
+{"type":"textBlock",
+"text":"<p><span style=\"color: rgb(90, 90, 90);\">\u8f6e\u6905\u4e13\u573a<\/span><\/p>",
+  "hover":true,
+  "subHover":false,
+  "selected":false,
+  "editName":"Text",
+  "width":"0",
+  "isOpenRemoteImageSrc":false,
+  "remoteImageSrc":"",
+  "style":{"isBgAuto":false,
+  "textOuterBg":"",
+  "bgSrc":"",
+  "bgSize":"100px",
+  "bgRepeat":false,
+  "bgPositionTop":50,
+  "bgPositionLeft":10,
+  "widgetPaddingTopBottom":"2px",
+  "widgetPaddingLeftRight":"0px",
+  "fontSize":"12px",
+  "align":"center",
+  "color":"#666",
+  "fontBolder":0,
+  "lineHeight":"16",
+  "widgetPaddingTop":"20px",
+  "widgetPaddingBottom":"20px",
+  "widgetPaddingLeft":"20px",
+  "widgetPaddingRight":"20px",
+  "bgAttr":"normal"
+},
+"targetDrag":false,
+"controlSelect":false,
+"placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f",
+"underline":0,
+"showPaddingWidgetLeftRight":false,
+"showPaddingWidgetTopBottom":false,
+"error":false
+}],
+"width":1,
+"beginIndex":1,
+"link":"",
+"controlSelect":false
+},
+{"vColumnSelect":false,
+"type":"vColumn",
+"numberEn":"two",
+"containerDrag":false,
+"number":2,
+"hover":true,
+"clickActive":true,
+"selected":false,
+"subHover":false,
+"isOutsideBg":false,
+"sort":"after",
+"outStyle":[],
+"isOpenRemoteImageSrc":false,
+"remoteImageSrc":"",
+"children":[{"type":"buttonBlock",
+"hover":true,
+"text":"\u72b6\u6001",
+"subHover":false,
+"editName":"Button",
+"width":1,
+"buttonLink":"http:\/\/www.drageasy.com",
+"selected":false,
+"isOpenRemoteImageSrc":false,
+"remoteImageSrc":"",
+"style":{"isBgAuto":false,
+"buttonOuterBg":"",
+"borderColor":"rgba(110, 219, 71, 1)",
+"borderWidth":"1px",
+"borderStyle":"solid",
+"borderRadius":"40px",
+"bgSrc":"",
+"bgSize":"37px",
+"bgRepeat":false,
+"bgPositionTop":45,
+"bgPositionLeft":47,
+"paddingTopBottom":"15px",
+"paddingLeftRight":"25px",
+"buttonFontSize":"20px",
+"buttonColor":"#ffffff",
+"buttonBg":"rgba(110, 219, 71, 1)",
+"align":"center",
+"widgetPaddingTopBottom":"1px",
+"widgetPaddingLeftRight":"0px",
+"widgetPaddingTop":"20px",
+"widgetPaddingBottom":"20px",
+"widgetPaddingLeft":"20px",
+"widgetPaddingRight":"20px",
+"bgAttr":"normal"},
+"bgLevel":"button",
+"vColumnSelect":false,
+"targetDrag":false,
+"clickActive":false,
+"controlSelect":false,
+"showPaddingWidgetLeftRight":false,
+"showPaddingWidgetTopBottom":false,
+"error":false,
+"bgAttr":"normal"},
+{"type":"textBlock",
+"text":"<p><span style=\"color: rgb(90, 90, 90);\">\u7406\u7597\u4eea\u5668<\/span><\/p>",
+  "hover":true,
+  "subHover":false,
+  "selected":false,
+  "editName":"Text",
+  "width":"0",
+  "isOpenRemoteImageSrc":false,
+  "remoteImageSrc":"",
+  "style":{"isBgAuto":false,
+  "textOuterBg":"",
+  "bgSrc":"",
+  "bgSize":"100px",
+  "bgRepeat":false,
+  "bgPositionTop":50,
+  "bgPositionLeft":10,
+  "widgetPaddingTopBottom":"2px",
+  "widgetPaddingLeftRight":"0px",
+  "fontSize":"12px",
+  "align":"center",
+  "color":"#666",
+  "fontBolder":0,
+  "lineHeight":"16",
+  "widgetPaddingTop":"20px",
+  "widgetPaddingBottom":"20px",
+  "widgetPaddingLeft":"20px",
+  "widgetPaddingRight":"20px",
+  "bgAttr":"normal"},
+  "targetDrag":false,
+  "controlSelect":false,
+  "placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f",
+  "underline":0,
+  "showPaddingWidgetLeftRight":false,
+  "showPaddingWidgetTopBottom":false,
+  "error":false}],
+  "width":1,
+  "beginIndex":1,
+  "link":"",
+  "controlSelect":false},
+  {"vColumnSelect":false,
+  "type":"vColumn",
+  "numberEn":"two",
+  "containerDrag":false,
+  "number":2,
+  "hover":true,
+  "clickActive":true,
+  "selected":false,
+  "subHover":false,
+  "isOutsideBg":false,
+  "sort":"after",
+  "outStyle":[],
+  "isOpenRemoteImageSrc":false,
+  "remoteImageSrc":"",
+  "children":[{"type":"buttonBlock",
+  "hover":true,
+  "text":"\u7ef4\u62a4",
+  "subHover":false,
+  "editName":"Button",
+  "width":1,
+  "buttonLink":"http:\/\/www.drageasy.com",
+  "selected":false,
+  "isOpenRemoteImageSrc":false,
+  "remoteImageSrc":"",
+  "style":{"isBgAuto":false,
+  "buttonOuterBg":"",
+  "borderColor":"rgba(177, 204, 55, 1)",
+  "borderWidth":"1px",
+  "borderStyle":"solid",
+  "borderRadius":"40px",
+  "bgSrc":"",
+  "bgSize":"37px",
+  "bgRepeat":false,
+  "bgPositionTop":45,
+  "bgPositionLeft":50,
+  "paddingTopBottom":"15px",
+  "paddingLeftRight":"25px",
+  "buttonFontSize":"20px",
+  "buttonColor":"#ffffff",
+  "buttonBg":"rgba(221, 226, 53, 1)",
+  "align":"center",
+  "widgetPaddingTopBottom":"1px",
+  "widgetPaddingLeftRight":"0px",
+  "widgetPaddingTop":"20px",
+  "widgetPaddingBottom":"20px",
+  "widgetPaddingLeft":"20px",
+  "widgetPaddingRight":"20px",
+  "bgAttr":"normal"},
+  "bgLevel":"button",
+  "vColumnSelect":false,
+  "targetDrag":false,
+  "clickActive":false,
+  "controlSelect":false,
+  "showPaddingWidgetLeftRight":false,
+  "showPaddingWidgetTopBottom":false,
+  "error":false,
+  "bgAttr":"normal"},
+  {"type":"textBlock",
+  "text":"<p><span style=\"color: rgb(90, 90, 90);\">\u8f6e\u6905\u4e13\u573a<\/span><\/p>",
+    "hover":true,
+    "subHover":false,
+    "selected":false,
+    "editName":"Text",
+    "width":"0",
+    "isOpenRemoteImageSrc":false,
+    "remoteImageSrc":"",
+    "style":{"isBgAuto":false,
+    "textOuterBg":"",
+    "bgSrc":"",
+    "bgSize":"100px",
+    "bgRepeat":false,
+    "bgPositionTop":50,
+    "bgPositionLeft":10,
+    "widgetPaddingTopBottom":"2px",
+    "widgetPaddingLeftRight":"0px",
+    "fontSize":"12px",
+    "align":"center",
+    "color":"#666",
+    "fontBolder":0,
+    "lineHeight":"16",
+    "widgetPaddingTop":"20px",
+    "widgetPaddingBottom":"20px",
+    "widgetPaddingLeft":"20px",
+    "widgetPaddingRight":"20px",
+    "bgAttr":"normal"},
+    "targetDrag":false,
+    "controlSelect":false,
+    "placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f",
+    "underline":0,
+    "showPaddingWidgetLeftRight":false,
+    "showPaddingWidgetTopBottom":false,
+    "error":false}],
+    "width":1,
+    "beginIndex":1,
+    "link":"",
+    "controlSelect":false},
+    {"vColumnSelect":false,
+    "type":"vColumn",
+    "numberEn":"two",
+    "containerDrag":false,
+    "number":2,
+    "hover":true,
+    "clickActive":true,
+    "selected":false,
+    "subHover":false,"isOutsideBg":false,"sort":"after","outStyle":[],"isOpenRemoteImageSrc":false,"remoteImageSrc":"","children":[{"type":"buttonBlock","hover":true,"text":"\u4eba\u5458","subHover":false,"editName":"Button","width":1,"buttonLink":"http:\/\/www.drageasy.com","selected":false,"isOpenRemoteImageSrc":false,"remoteImageSrc":"","style":{"isBgAuto":false,"buttonOuterBg":"","borderColor":"rgba(236, 65, 49, 1)","borderWidth":"1px","borderStyle":"solid","borderRadius":"40px","bgSrc":"","bgSize":"37px","bgRepeat":false,"bgPositionTop":45,"bgPositionLeft":53,"paddingTopBottom":"15px","paddingLeftRight":"25px","buttonFontSize":"20px","buttonColor":"#ffffff","buttonBg":"rgba(236, 62, 62, 1)","align":"center","widgetPaddingTopBottom":"1px","widgetPaddingLeftRight":"0px","widgetPaddingTop":"20px","widgetPaddingBottom":"20px","widgetPaddingLeft":"20px","widgetPaddingRight":"20px","bgAttr":"normal"},"bgLevel":"button","vColumnSelect":false,"targetDrag":false,"clickActive":false,"controlSelect":false,"showPaddingWidgetLeftRight":false,"showPaddingWidgetTopBottom":false,"error":false,"bgAttr":"normal"},{"type":"textBlock","text":"<p><span style=\"color: rgb(90, 90, 90);\">\u8f6e\u6905\u4e13\u573a<\/span><\/p>","hover":true,"subHover":false,"selected":false,"editName":"Text","width":"0","isOpenRemoteImageSrc":false,"remoteImageSrc":"","style":{"isBgAuto":false,"textOuterBg":"","bgSrc":"","bgSize":"100px","bgRepeat":false,"bgPositionTop":50,"bgPositionLeft":10,"widgetPaddingTopBottom":"2px","widgetPaddingLeftRight":"0px","fontSize":"12px","align":"center","color":"#666","fontBolder":0,"lineHeight":"16","widgetPaddingTop":"20px","widgetPaddingBottom":"20px","widgetPaddingLeft":"20px","widgetPaddingRight":"20px","bgAttr":"normal"},"targetDrag":false,"controlSelect":false,"placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f","underline":0,"showPaddingWidgetLeftRight":false,"showPaddingWidgetTopBottom":false,"error":false}],"width":1,"beginIndex":1,"link":"","controlSelect":false}],"subHover":false,"love":false,"sort":"after","beginIndex":1,"error":false,"timestamp":16049642194},{"type":"dividerBlock","hover":false,"subHover":false,"editName":"Divider","width":"0","selected":false,"isOpenRemoteImageSrc":false,"remoteImageSrc":"","style":{"isBgAuto":false,"dividerOuterBg":"","bgSrc":"","bgSize":"100px","bgRepeat":false,"bgPositionTop":50,"bgPositionLeft":10,"lineWidth":"335px","borderWidth":"1px","borderColor":"rgba(230, 230, 230, 1)","borderStyle":"solid","align":"center","widgetPaddingTopBottom":"9px","widgetPaddingLeftRight":"20px","widgetPaddingTop":"20px","widgetPaddingBottom":"20px","widgetPaddingLeft":"20px","widgetPaddingRight":"20px","bgAttr":"normal"},"clickActive":false,"controlSelect":false,"showPaddingWidgetLeftRight":false,"showPaddingWidgetTopBottom":false,"error":false},{"type":"textBlock","text":"","placeholder":"\u70b9\u51fb\u6b64\u5904\u6253\u5f00\u7f16\u8f91\u9762\u677f","hover":false,"subHover":false,"selected":false,"editName":"Text","width":"0","isOpenRemoteImageSrc":false,"remoteImageSrc":"","underline":0,"controlSelect":false,"showPaddingWidgetLeftRight":false,"showPaddingWidgetTopBottom":false,"error":false,"style":{"bgAttr":"normal","textOuterBg":"","bgSrc":"","fontBolder":0,"bgSize":"100px","bgPositionTop":50,"bgPositionLeft":10,"fontSize":"14px","lineHeight":"16","align":"center","color":"rgb(102 102 102)","widgetPaddingTopBottom":"20px","widgetPaddingLeftRight":"20px","widgetPaddingTop":"20px","widgetPaddingBottom":"20px","widgetPaddingLeft":"20px","widgetPaddingRight":"20px"},"clickActive":false},{"type":"imageBlock","hover":false,"subHover":false,"editName":"Image","width":"0","remoteImageSrc":"","isOpenRemoteImageSrc":false,"imgClickLink":"","src":"https:\/\/www.drageasy.com\/img\/drag_default.jpeg","srcBase64":false,"selected":false,"imageAutoWidth":true,"controlSelect":false,"showPaddingWidgetLeftRight":false,"showPaddingWidgetTopBottom":false,"error":false,"style":{"imageOuterBg":"","isBgAuto":false,"borderColor":"rgb(204 204 204)","borderWidth":"0px","borderStyle":"solid","borderRadius":"1px","imageWidth":498,"paddingTopBottom":0,"paddingLeftRight":0,"align":"center","widgetPaddingTopBottom":"10px","widgetPaddingLeftRight":"10px","widgetPaddingTop":"10px","widgetPaddingBottom":"10px","widgetPaddingLeft":"10px","widgetPaddingRight":"10px"},"clickActive":false},{"type":"spaceBlock","hover":false,"subHover":false,"editName":"Space","width":"0","selected":false,"isOpenRemoteImageSrc":false,"remoteImageSrc":"","style":{"isBgAuto":false,"spaceBg":"#434343","bgSrc":"","bgSize":"100px","bgRepeat":false,"bgPositionTop":50,"bgPositionLeft":10,"widgetPaddingTopBottom":"14px","bgAttr":"normal"},"clickActive":false,"targetDrag":false,"link":"","controlSelect":false,
+    "error":false}];
+      window.drageasyConfig = {
+        rightLists: lists,
+        makeType: 'email',
+      };</script>
+    <div>
+      <div cladiv"preview-content" style="width: 100%;">
+        <div class="content-wrap" style="margin: 0px auto; overflow: hidden; background-color: rgb(255, 255, 255); width: 800px;">
+          <!---->
+          <div class="full" style="margin: 0px auto; max-width: 800px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 800px;">
+              <tbody>
+                <tr>
+                  <td class="fullTd" style="direction: ltr; width: 800px; font-size: 0px; padding-bottom: 0px; text-align: center; vertical-align: top; background-color: rgb(49, 126, 231); background-image: url(&quot;&quot;); background-repeat: no-repeat; background-size: 100px; background-position: 10% 50%;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="vertical-align: top;">
+                      <tr>
+                        <td align="left" style="font-size: 0px; padding: 20px;">
+                          <div class="text" style="word-wrap: break-word; margin: 0px; text-align: center; line-height: 1.6; color: rgb(255, 255, 255); font-size: 24px; font-weight: normal;">
+                            <div>
+                              <p style="text-size-adjust: none; word-break: break-word; line-height: 1.6; font-size: 24px; margin: 0px;">数字孪生平台</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="full" style="margin: 0px auto; max-width: 800px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 800px;">
+              <tbody>
+                <tr>
+                  <td style="direction: ltr; font-size: 0px; padding-top: 0px; text-align: center; vertical-align: top;">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="vertical-align: top;">
+                      <tr>
+                        <td align="center" vertical-align="middle" style="line-height: 0; padding-top: 9px; width: 800px; background-image: url(&quot;&quot;); background-size: 100px; background-position: 10% 50%; background-repeat: no-repeat;">
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="full" style="margin: 0px auto; line-height: 0px; max-width: 800px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 800px;">
+              <tbody>
+                <tr>
+                  <td align="center" class="fullTd" style="direction: ltr; font-size: 0px; padding: 20px; text-align: center; vertical-align: top; word-break: break-word; width: 800px; background-image: url(&quot;&quot;); background-repeat: repeat; background-size: 100px; background-position: 10% 50%;">
+                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0px;">
+                      <tbody>
+                        <tr>
+                          <td style="width: 375px; border-top: 1px solid rgb(204, 204, 204);">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin: 0px auto; max-width: 800px;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="background-color: rgb(255, 255, 255); background-image: url(&quot;&quot;); background-repeat: no-repeat; background-size: 100px; background-position: 1% 50%;">
+              <tbody>
+                <tr>
+                  <td style="direction: ltr; font-size: 0px; text-align: center; vertical-align: top; width: 800px;">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="vertical-align: top;">
+                      <tbody>
+                        <tr>
+                          <td class="fourColumn column1" style="width: 20%; max-width: 20%; min-height: 1px; font-size: 13px; text-align: left; direction: ltr; vertical-align: top; padding: 0px;">
+                            <div columnnumber="5">
+                              <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                                <tbody>
+                                  <tr>
+                                    <td style="direction: ltr; font-size: 0px; text-align: center; vertical-align: top; border: 0px;">
+                                      <div class="mj-column-per-50" style="width: 100%; max-width: 100%; font-size: 13px; text-align: left; direction: ltr; display: inline-block; vertical-align: top;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border-spacing: 0px; width: 100%; vertical-align: top;">
+                                          <tr>
+                                            <td align="center" border="0" style="font-size: 0px; word-break: break-word;">
+                                              <div class="full" style="margin: 0px auto; max-width: 800px;">
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 120px;">
+                                                  <tbody>
+                                                    <tr>
+                                                      <td align="center" vertical-align="middle" style="font-size: 0px; word-break: break-word; width: 120px; padding: 1px 0px;">
+                                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; line-height: 1;">
+                                                          <tr>
+                                                            <td align="center" valign="middle" style="line-height: 1; background-color: rgb(49, 126, 231); padding: 15px 25px; border-radius: 40px; border-width: 1px; border-color: rgb(49, 126, 231); border-style: solid; background-image: url(&quot;&quot;); background-size: 41px; background-position: 42% 45%; background-repeat: no-repeat;">
+                                                              <a target="_blank" href="" style="font-size: 0px; text-decoration: none;">
+                                                                <p style="margin: 0px; color: rgb(255, 255, 255); line-height: 1; font-size: 20px; font-weight: normal; text-decoration: none; text-transform: none;">
+                                                                  <span id="b1">概览</span>
+                                                                </p>
+                                                              </a>
+                                                            </td>
+                                                          </tr>
+                                                        </table>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                            </td>
+                                          </tr>
+                                        </table>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                          <td class="fourColumn column2" style="width: 20%; max-width: 20%; min-height: 1px; font-size: 13px; text-align: left; direction: ltr; vertical-align: top; padding: 0px;">
+                            <div columnnumber="5">
+                              <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                                <tbody>
+                                  <tr>
+                                    <td style="direction: ltr; font-size: 0px; text-align: center; vertical-align: top; border: 0px;">
+                                      <div class="mj-column-per-50" style="width: 100%; max-width: 100%; font-size: 13px; text-align: left; direction: ltr; display: inline-block; vertical-align: top;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border-spacing: 0px; width: 100%; vertical-align: top;">
+                                          <tr>
+                                            <td align="center" border="0" style="font-size: 0px; word-break: break-word;">
+                                              <div class="full" style="margin: 0px auto; max-width: 600px;">
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 120px;">
+                                                  <tbody>
+                                                    <tr>
+                                                      <td align="center" vertical-align="middle" style="font-size: 0px; word-break: break-word; width: 120px; padding: 1px 0px;">
+                                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; line-height: 1;">
+                                                          <tr>
+                                                            <td align="center" valign="middle" style="line-height: 1; background-color: rgb(244, 165, 70); padding: 15px 25px; border-radius: 40px; border-width: 1px; border-color: rgb(244, 165, 70); border-style: solid; background-image: url(&quot;&quot;); background-size: 37px; background-position: 42% 45%; background-repeat: no-repeat;">
+                                                              <a target="_blank" href="" style="font-size: 0px; text-decoration: none;"><p style="margin: 0px; color: rgb(255, 255, 255); line-height: 1; font-size: 20px; font-weight: normal; text-decoration: none; text-transform: none;">
+                                                                <span id="b2">信号</span>
+                                                              </p>
+                                                            </a>
+                                                          </td>
+                                                        </tr>
+                                                      </table>
+                                                    </td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                    <td class="fourColumn column3" style="width: 20%; max-width: 20%; min-height: 1px; font-size: 13px; text-align: left; direction: ltr; vertical-align: top; padding: 0px;">
+                      <div columnnumber="5">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                          <tbody>
+                            <tr>
+                              <td style="direction: ltr; font-size: 0px; text-align: center; vertical-align: top; border: 0px;">
+                                <div class="mj-column-per-50" style="width: 100%; max-width: 100%; font-size: 13px; text-align: left; direction: ltr; display: inline-block; vertical-align: top;">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border-spacing: 0px; width: 100%; vertical-align: top;">
+                                    <tr>
+                                      <td align="center" border="0" style="font-size: 0px; word-break: break-word;">
+                                        <div class="full" style="margin: 0px auto; max-width: 600px;">
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 120px;">
+                                            <tbody>
+                                              <tr>
+                                                <td align="center" vertical-align="middle" style="font-size: 0px; word-break: break-word; width: 120px; padding: 1px 0px;">
+                                                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; line-height: 1;">
+                                                    <tr>
+                                                      <td align="center" valign="middle" style="line-height: 1; background-color: rgb(110, 219, 71); padding: 15px 25px; border-radius: 40px; border-width: 1px; border-color: rgb(110, 219, 71); border-style: solid; background-image: url(&quot;&quot;); background-size: 37px; background-position: 47% 45%; background-repeat: no-repeat;">
+                                                        <a target="_blank" href="" style="font-size: 0px; text-decoration: none;">
+                                                          <p style="margin: 0px; color: rgb(255, 255, 255); line-height: 1; font-size: 20px; font-weight: normal; text-decoration: none; text-transform: none;">
+                                                            <span id="b3">状态</span>
+                                                          </p>
+                                                        </a>
+                                                      </td>
+                                                    </tr>
+                                                  </table>
+                                                </td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </td>
+                    <td class="fourColumn column4" style="width: 20%; max-width: 20%; min-height: 1px; font-size: 13px; text-align: left; direction: ltr; vertical-align: top; padding: 0px;">
+                      <div columnnumber="5">
+                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                          <tbody>
+                            <tr>
+                              <td style="direction: ltr; font-size: 0px; text-align: center; vertical-align: top; border: 0px;">
+                                <div class="mj-column-per-50" style="width: 100%; max-width: 100%; font-size: 13px; text-align: left; direction: ltr; display: inline-block; vertical-align: top;">
+                                  <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border-spacing: 0px; width: 100%; vertical-align: top;">
+                                    <tr>
+                                      <td align="center" border="0" style="font-size: 0px; word-break: break-word;">
+                                        <div class="full" style="margin: 0px auto; max-width: 600px;">
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 120px;">
+                                            <tbody>
+                                              <tr>
+                                                <td align="center" vertical-align="middle" style="font-size: 0px; word-break: break-word; width: 120px; padding: 1px 0px;">
+                                                  <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; line-height: 1;">
+                                                    <tr>
+                                                      <td align="center" valign="middle" style="line-height: 1; background-color: rgb(221, 226, 53); padding: 15px 25px; border-radius: 40px; border-width: 1px; border-color: rgb(177, 204, 55); border-style: solid; background-image: url(&quot;&quot;); background-size: 37px; background-position: 50% 45%; background-repeat: no-repeat;">
+                                                        <a target="_blank" href="http://www.drageasy.com" style="font-size: 0px; text-decoration: none;"><p style="margin: 0px; color: rgb(255, 255, 255); line-height: 1; font-size: 20px; font-weight: normal; text-decoration: none; text-transform: none;">
+                                                          <span id="b4">维护</span>
+                                                        </p>
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                  <td class="fourColumn column5" style="width: 20%; max-width: 20%; min-height: 1px; font-size: 13px; text-align: left; direction: ltr; vertical-align: top; padding: 0px;">
+                    <div columnnumber="5">
+                      <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
+                        <tbody>
+                          <tr>
+                            <td style="direction: ltr; font-size: 0px; text-align: center; vertical-align: top; border: 0px;">
+                              <div class="mj-column-per-50" style="width: 100%; max-width: 100%; font-size: 13px; text-align: left; direction: ltr; display: inline-block; vertical-align: top;">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse; border-spacing: 0px; width: 100%; vertical-align: top;">
+                                  <tr>
+                                    <td align="center" border="0" style="font-size: 0px; word-break: break-word;">
+                                      <div class="full" style="margin: 0px auto; max-width: 600px;">
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 120px;">
+                                          <tbody>
+                                            <tr>
+                                              <td align="center" vertical-align="middle" style="font-size: 0px; word-break: break-word; width: 120px; padding: 1px 0px;">
+                                                <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; line-height: 1;">
+                                                  <tr>
+                                                    <td align="center" valign="middle" style="line-height: 1; background-color: rgb(236, 62, 62); padding: 15px 25px; border-radius: 40px; border-width: 1px; border-color: rgb(236, 65, 49); border-style: solid; background-image: url(&quot;&quot;); background-size: 37px; background-position: 53% 45%; background-repeat: no-repeat;">
+                                                      <a target="_blank" href="http://www.drageasy.com" style="font-size: 0px; text-decoration: none;">
+                                                        <p style="margin: 0px; color: rgb(255, 255, 255); line-height: 1; font-size: 20px; font-weight: normal; text-decoration: none; text-transform: none;">
+                                                          <span id="b5">人员</span>
+                                                        </p>
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="full" style="margin: 0px auto; line-height: 0px; max-width: 600px;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 600px;">
+      <tbody>
+        <tr>
+          <td align="center" class="fullTd" style="direction: ltr; font-size: 0px; padding: 9px 20px; text-align: center; vertical-align: top; word-break: break-word; width: 600px; background-image: url(&quot;&quot;); background-repeat: no-repeat; background-size: 100px; background-position: 10% 50%;">
+            <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0px;">
+              <tbody>
+                <tr>
+                  <td style="width: 335px; border-top: 1px solid rgb(230, 230, 230);">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="full" style="margin: 0px auto; max-width: 600px;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 600px;">
+      <tbody>
+        <tr>
+          <td class="fullTd" style="direction: ltr; width: 600px; font-size: 0px; padding-bottom: 0px; text-align: center; vertical-align: top; background-image: url(&quot;&quot;); background-repeat: no-repeat; background-size: 100px; background-position: 10% 50%;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="vertical-align: top;">
+              <tr>
+                <td align="left" style="font-size: 0px; padding: 20px;">
+                  <div class="text" style="word-wrap: break-word; margin: 0px; text-align: center; line-height: 1.6; color: rgb(102, 102, 102); font-size: 14px; font-weight: normal;">
+                    <div>
+ <div>
+        <div id="tab_1">子页面1</div>
+        <div id="tab_2" style="display: none">子页面2</div>
+        <div id="tab_3" style="display: none">子页面3</div>
+        <div id="tab_4" style="display: none">子页面4</div>
+        <div id="tab_5" style="display: none">子页面5</div>
+      </div>
+
+
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="full" style="margin: 0px auto; max-width: 600px;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 600px;">
+      <tbody>
+        <tr>
+          <td class="fullTd" style="direction: ltr; width: 600px; font-size: 0px; padding-bottom: 0px; text-align: center; vertical-align: top;">
+            <div style="display: inline-block; vertical-align: top; width: 100%;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="vertical-align: top;">
+                <tr>
+                  <td style="font-size: 0px; word-break: break-word; width: 580px; text-align: center; padding: 10px;">
+                    <div>
+                      <img height="auto" alt="拖拽生成HTML邮件-拉易网-4" width="auto" src="https://www.drageasy.com/img/drag_default.jpeg" style="box-sizing: border-box; border: 0px; display: inline-block; outline: none; text-decoration: none; height: auto; width: auto; max-width: 100%; padding: 0px;">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="full" style="margin: 0px auto; max-width: 600px;">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" class="fullTable" style="width: 600px;">
+      <tbody>
+        <tr>
+          <td style="direction: ltr; font-size: 0px; padding-top: 0px; text-align: center; vertical-align: top;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="vertical-align: top;">
+              <tr>
+                <td align="center" vertical-align="middle" style="line-height: 0; padding-top: 14px; background-color: rgb(67, 67, 67); width: 600px; background-image: url(&quot;&quot;); background-size: 100px; background-position: 10% 50%; background-repeat: no-repeat;">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+            <div class="content" style="font-size: 0;">
+          <p></p>
+        </div>
+        <script src=https://www.drageasy.com/drag-assets/pc/drag-js/chunk-vendors.js></script>
+    <script src=https://www.drageasy.com/drag-assets/pc/drag-js/index.js></script>
+            <script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.1.0.js"></script>
+      </body>
+</html>
